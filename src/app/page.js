@@ -80,9 +80,9 @@ export default function Home() {
             needs of early to mid-stage Web3 and AI startups. Our services help
             streamline essential HR operations, from setting up HRIS and payroll
             systems to developing recruiting strategies and company policies.
-            Whether it's building your employee handbook, facilitating mission
-            and values workshops, or managing state tax registration, we ensure
-            your HR foundation is solid.
+            Whether it&#39;s building your employee handbook, facilitating
+            mission and values workshops, or managing state tax registration, we
+            ensure your HR foundation is solid.
           </p>
 
           <p className="text-gray-700">
@@ -142,8 +142,8 @@ export default function Home() {
         <div className="max-w-xl px-4 text-center">
           <h3 className="text-3xl font-semibold mb-4">Get In Touch</h3>
           <p className="mb-6 text-gray-700">
-            We'd love to hear from you. Whether you're seeking a partner in
-            people strategy or just want to say hello — reach out!
+            We&#39;d love to hear from you. Whether you&#39;re seeking a partner
+            in people strategy or just want to say hello — reach out!
           </p>
           <a
             href="mailto:hello@moonpeople.xyz"
