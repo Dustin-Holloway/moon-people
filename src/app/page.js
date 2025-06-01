@@ -1,102 +1,161 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // Close menu when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="min-h-screen font-sans text-gray-800">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 bg-white shadow z-50 px-6 py-2 flex items-center justify-between">
+        <Image
+          src="/logo.jpg"
+          alt="Moon People Logo"
+          width={100}
+          height={100}
+        />
+
+        <div className="relative" ref={menuRef}>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="focus:outline-none text-3xl"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
+            ☰
+          </button>
+
+          {isMenuOpen && (
+            <ul className="absolute right-0 mt-2 w-40 bg-white shadow-md rounded-md p-4 space-y-2 z-10">
+              <li>
+                <a href="#home" className="block hover:text-blue-600">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#about" className="block hover:text-blue-600">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="block hover:text-blue-600">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="block hover:text-blue-600">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          )}
+        </div>
+      </nav>
+
+      {/* Sections */}
+      <section
+        id="home"
+        className="h-170 items-center justify-center bg-gradient-to-br from-blue-50 to-white pt-25 py-50"
+      >
+        <div className="max-w-2xl px-4 mx-auto pt-20">
+          <h2 className="text-5xl font-bold mb-6 text-center">
+            Welcome to Moon People
+          </h2>
+
+          <p className="text-gray-700 mb-6 pt-10">
+            Moon People specializes in providing HR solutions tailored to the
+            needs of early to mid-stage Web3 and AI startups. Our services help
+            streamline essential HR operations, from setting up HRIS and payroll
+            systems to developing recruiting strategies and company policies.
+            Whether it's building your employee handbook, facilitating mission
+            and values workshops, or managing state tax registration, we ensure
+            your HR foundation is solid.
+          </p>
+
+          <p className="text-gray-700">
+            Our expertise also extends to global workforce management, including
+            EOR and contractor setups for international workers. We optimize
+            your internal systems to ensure seamless HR and recruiting
+            processes. With flexible initial contracts from 1–6 months, we offer
+            the support you need to scale efficiently.
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="about"
+        className="h-screen flex items-center justify-center bg-gray-30"
+      >
+        <div className="max-w-2xl px-4 pt-20">
+          <h3 className="text-3xl font-semibold mb-4">About Us</h3>
+          <div className="flex justify-center gap-6 py-6">
+            <Image src="/lgbit.jpg" alt="LG" width={200} height={200} />
+            <Image src="/TOSHBIT.JPEG" alt="Toshiba" width={200} height={200} />
+          </div>
+          <p className="text-gray-700 pt-5">
+            At Moon People, we believe every organization thrives when its
+            people thrive. Our team brings decades of experience in human
+            resources, organizational design, and employee engagement.
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="services"
+        className="min-h-screen flex items-center justify-center bg-gray-50"
+      >
+        <div className="max-w-4xl px-4">
+          <h3 className="text-3xl font-semibold mb-6 text-center">Services</h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 list-disc list-inside text-gray-700 pt-10">
+            <li>Employee Onboarding</li>
+            <li>HR Policy Development</li>
+            <li>Performance Management</li>
+            <li>Employee Engagement</li>
+            <li>Training and Development</li>
+            <li>Conflict Resolution and Mediation</li>
+            <li>Compensation and Benefits</li>
+            <li>HRIS Setup and Management</li>
+            <li>State Tax Registration</li>
+            <li>Payroll Setup and Compliance</li>
+            <li>Legal Compliance</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        className="h-screen flex items-center justify-center bg-white"
+      >
+        <div className="max-w-xl px-4 text-center">
+          <h3 className="text-3xl font-semibold mb-4">Get In Touch</h3>
+          <p className="mb-6 text-gray-700">
+            We'd love to hear from you. Whether you're seeking a partner in
+            people strategy or just want to say hello — reach out!
+          </p>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:hello@moonpeople.xyz"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
           >
-            Read our docs
+            Contact Us
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <footer className="text-center text-sm py-6 text-gray-500">
+        &copy; {new Date().getFullYear()} Moon People. All rights reserved.
       </footer>
     </div>
   );
