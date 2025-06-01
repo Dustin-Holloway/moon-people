@@ -13,12 +13,13 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Moon People",
-  description: "HR Resources",
+  description: "Custom AV solutions for modern spaces",
   icons: {
-    icon: "/moonpeople.png", // or /favicon.ico
+    icon: "/moonpeople.png", // or '/favicon.ico'
+    shortcut: "/moonpeople.png",
+    apple: "/moonpeople.png",
   },
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
