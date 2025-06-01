@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Moon People",
-  description: "Custom AV solutions for modern spaces",
+  description: "HR Services",
   icons: {
     icon: "/moonpeople.png", // or '/favicon.ico'
     shortcut: "/moonpeople.png",
