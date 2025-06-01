@@ -24,7 +24,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white shadow z-50 px-6 py-2 flex items-center justify-between">
         <Image
-          src="/logo.jpg"
+          src="/Logo.jpg"
           alt="Moon People Logo"
           width={100}
           height={100}
