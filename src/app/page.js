@@ -20,17 +20,18 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans text-gray-800">
+    <div className="min-h-screen font-sans text-gray-600">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white shadow z-50 px-6 py-2 flex items-center justify-between">
-        <Image
+
+      <nav className="fixed top-0 left-0 right-0 shadow z-50 px-6 py-2 flex items-center justify-between">
+        {/* <Image
           src="/Logo.jpg"
           alt="Moon People Logo"
           width={100}
           height={100}
-        />
+        /> */}
 
-        <div className="relative" ref={menuRef}>
+        <div className="absolute top-4 right-6 z-50" ref={menuRef}>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="focus:outline-none text-3xl"
@@ -39,24 +40,24 @@ export default function Home() {
           </button>
 
           {isMenuOpen && (
-            <ul className="absolute right-0 mt-2 w-40 bg-white shadow-md rounded-md p-4 space-y-2 z-10">
+            <ul className="absolute right-0 mt-2 w-30 bg-gray-300 shadow-md rounded-md p-4 space-y-2 z-10">
               <li>
-                <a href="#home" className="block hover:text-blue-600">
+                <a href="#home" className="block hover:text-white">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#about" className="block hover:text-blue-600">
+                <a href="#about" className="block hover:text-white">
                   About
                 </a>
               </li>
               <li>
-                <a href="#services" className="block hover:text-blue-600">
+                <a href="#services" className="block hover:text-white">
                   Services
                 </a>
               </li>
               <li>
-                <a href="#contact" className="block hover:text-blue-600">
+                <a href="#contact" className="block hover:text-white">
                   Contact
                 </a>
               </li>
@@ -68,14 +69,15 @@ export default function Home() {
       {/* Sections */}
       <section
         id="home"
-        className="h-170 items-center justify-center bg-gradient-to-br from-blue-50 to-white pt-25 py-50"
+        className="h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-white"
+        style={{ backgroundImage: "url('/moonpeoplehero.png')" }}
       >
         <div className="max-w-2xl px-4 mx-auto pt-20">
-          <h2 className="text-5xl font-bold mb-6 text-center">
-            Welcome to Moon People
-          </h2>
+          {/* <h2 className="text-5xl font-bold mb-6 text-center">
+           
+          </h2> */}
 
-          <p className="text-gray-700 mb-6 pt-10">
+          {/* <p className="text-gray-700 mb-6 pt-10">
             Moon People specializes in providing HR solutions tailored to the
             needs of early to mid-stage Web3 and AI startups. Our services help
             streamline essential HR operations, from setting up HRIS and payroll
@@ -83,21 +85,21 @@ export default function Home() {
             Whether it&#39;s building your employee handbook, facilitating
             mission and values workshops, or managing state tax registration, we
             ensure your HR foundation is solid.
-          </p>
+          </p> */}
 
-          <p className="text-gray-700">
+          {/* <p className="text-gray-700">
             Our expertise also extends to global workforce management, including
             EOR and contractor setups for international workers. We optimize
             your internal systems to ensure seamless HR and recruiting
             processes. With flexible initial contracts from 1–6 months, we offer
             the support you need to scale efficiently.
-          </p>
+          </p> */}
         </div>
       </section>
 
       <section
         id="about"
-        className="h-screen flex items-center justify-center bg-gray-30"
+        className="h-screen flex items-center justify-center bg-gray-200"
       >
         <div className="max-w-2xl px-4 pt-20">
           <h3 className="text-3xl font-semibold mb-4">About Us</h3>
@@ -115,7 +117,7 @@ export default function Home() {
 
       <section
         id="services"
-        className="min-h-screen flex items-center justify-center bg-gray-50"
+        className="min-h-screen flex items-center justify-center bg-gray-200"
       >
         <div className="max-w-4xl px-4">
           <h3 className="text-3xl font-semibold mb-6 text-center">Services</h3>
@@ -137,7 +139,7 @@ export default function Home() {
 
       <section
         id="contact"
-        className="h-screen flex items-center justify-center bg-white"
+        className="h-screen flex items-center justify-center bg-gray-200"
       >
         <div className="max-w-xl px-4 text-center">
           <h3 className="text-3xl font-semibold mb-4">Get In Touch</h3>
@@ -147,7 +149,7 @@ export default function Home() {
           </p>
           <a
             href="mailto:hello@moonpeople.xyz"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition"
+            className="inline-block bg-gray-600 text-white px-6 py-3 rounded-full hover:bg-black transition"
           >
             Contact Us
           </a>
