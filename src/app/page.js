@@ -70,7 +70,7 @@ export default function Home() {
       <section
         id="home"
         className="h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center text-white"
-        style={{ backgroundImage: "url('/moonpeoplehero.png')" }}
+        style={{ backgroundImage: "url('/Moonpeoplehero.png')" }}
       >
         <div className="max-w-2xl px-4 mx-auto pt-20">
           {/* <h2 className="text-5xl font-bold mb-6 text-center">
